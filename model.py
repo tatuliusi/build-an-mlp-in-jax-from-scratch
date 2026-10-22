@@ -47,8 +47,13 @@ def assign_class_labels(inputs, num_classes):
     res = jnp.argmax(first_cols, axis=1).astype(jnp.int32)
     return res
 
-# Step 6 - one_hot_encode_labels (not yet solved)
-# TODO: implement
+# Step 6 - one_hot_encode_labels
+def one_hot_encode_labels(labels, num_classes):
+    # TODO: Convert a 1-D array of integer class indices into a 2-D one-hot matrix of shape (batch, num_classes).
+    col = labels[:, None]
+    row = jnp.arange(num_classes)[None, :]
+    grid = (col == row)
+    return grid.astype(jnp.float32)
 
 # Step 7 - init_linear_layer (not yet solved)
 # TODO: implement
